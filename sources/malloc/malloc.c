@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/04/17 12:59:11 by npineau           #+#    #+#             */
-/*   Updated: 2014/04/17 18:49:18 by npineau          ###   ########.fr       */
+/*   Updated: 2014/04/17 19:57:18 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ static void	alloc(size_t size, void *table, void **last_search)
 	if (last_search == NULL)
 	{
 		(unsigned int)*table = (unsigned int)size;
-		**last_search = (void *)(table + size + sizeof(unsigned int));
-		**(last_search + sizeof(void *));
+		return (table + sizeof(unsigned int));
 	}
 }
 
