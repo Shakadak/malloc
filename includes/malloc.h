@@ -6,32 +6,28 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/04/17 13:08:02 by npineau           #+#    #+#             */
-/*   Updated: 2014/04/17 13:16:13 by npineau          ###   ########.fr       */
+/*   Updated: 2014/04/17 16:50:35 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MALLOC_H
 # define MALLOC_H
 
-#include <sys/type.h>
+# include <sys/type.h>
 
-typedef struct		s_mem
+typedef struct	s_table
 {
-	size_t			size;
-	void			*target;
-	struct s_mem	*next;
-}					t_mem;
+	void		*tiny;
+	void		*last_tiny;
+	void		*small;
+	void		*last_small;
+}				t_table;
 
-typedef struct		s_table
-{
-	t_mem			*tiny;
-	t_mem			*small;
-	t_mem			*large;
-}					t_table;
+extern t_table	g_content_table;
 
-void				*malloc(size_t size);
-void				*realloc(void *ptr, size_t size);
-void				free(void *ptr);
-void				show_alloc_mem(void);
+void			*malloc(size_t size);
+void			*realloc(void *ptr, size_t size);
+void			free(void *ptr);
+void			show_alloc_mem(void);
 
-#endif /* ! MALLOC_H */
+#endif
